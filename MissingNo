@@ -1,0 +1,23 @@
+public class MissingNo {
+	static int search(int ar[], int size) {
+		int low = 0;
+		int high = ar.length - 1;
+		while (low <= high) {
+			int mid = low + (high - low) / 2;
+			if (ar[mid] != mid + 1 && ar[mid - 1] == mid) {
+				return mid + 1;
+			}
+			if (ar[mid] == mid + 1)
+				low = mid + 1;
+
+			// This case means that the missing element is not
+			// to the right. So search the left.
+			else
+				high = mid - 1;
+		}
+
+		return -1;
+	}
+
+
+// time complexity- 0(logn) 
